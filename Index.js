@@ -10,34 +10,44 @@ const DataSet = [
 ]
 
 function strLowerCase(str) {
-  let newStr = ""; // Buatlah variable String yang baru
-  for (let i = 0; i < str.length; i++) { // Lakukan loop sampai dengan panjang String
-    let code = str.charCodeAt(i); // Ambil nilai kode char
-
-    // cek apakah string tersebut berisikan huruf besar atau tidak (ASCII dari 65-90)
-    if (code >= 65 && code <= 90) {
-      code += 32; // Tambah 32 untuk mengkonversi ke lowercase
-    }
-
-    // Masukan string original yang sudah di lower case ke string yang baru
-    newStr += String.fromCharCode(code);
+  const char = {
+    A: 'a', B: 'b', C: 'c',
+    D: 'd', E: 'e', F: 'f',
+    G: 'g', H: 'h', I: 'i',
+    J: 'j', K: 'k', L: 'l',
+    M: 'm', N: 'n', O: 'o',
+    P: 'p', Q: 'q', R: 'r',
+    S: 's', T:'t', U: 'u',
+    V: 'v', W: 'w', X: 'x',
+    Y: 'y', Z: 'z'
   }
-  return newStr;
+
+  let strBaru = ""
+  for(let i=0; i<str.length; i++){
+    let potongan = str[i]
+    if(char[potongan]){
+        strBaru += char[potongan]
+    }
+    else{
+        strBaru += potongan
+    }
+  }
+  return strBaru
 }
 
-function cocok(namaSiswa, keywordPencarian){ //Membuat function untuk mengecek apakah sebuah kata pencarian cocok dengan nama siswa yang ada pada DataSet
-    let translateNamaSiswa = strLowerCase(namaSiswa) //Translate untuk menjalankan case sensitivity manual
-    let translateKeywordPencarian = strLowerCase(keywordPencarian) //Translate untuk menjalankan case sensitivity manual
+function cocok(namaSiswa, keywordPencarian){ 
+    let translateNamaSiswa = strLowerCase(namaSiswa) 
+    let translateKeywordPencarian = strLowerCase(keywordPencarian) 
 
-    for(let i = 0; i<= translateNamaSiswa.length - keywordPencarian.length; i++){//Looping ini mengambil hasil dari nilai dari panjang String namaSiswa yang akan dicek - panjang String keyword pencarian
-        let res = true; //Inisiasi variable res kita buat true
-        for(let j = 0; j< translateKeywordPencarian.length; j++){//Looping ini untuk mengambil nilai panjang dari keyword
-            if(translateNamaSiswa[i+j] !== translateKeywordPencarian[j]){//if disini memberikan kondisi jika namaSiswa tidak memiliki panjang yang sama dengan keyword pencarian
-                res = false;//Kita buat res disini menjadi false
+    for(let i = 0; i<= translateNamaSiswa.length - keywordPencarian.length; i++){
+        let res = true; 
+        for(let j = 0; j< translateKeywordPencarian.length; j++){
+            if(translateNamaSiswa[i+j] !== translateKeywordPencarian[j]){
+                res = false;
                 break;
             }
         }
-        if(res){//if disini untuk memberikan kondisi pada res yang bernilai true maka akan me return nilai true
+        if(res){
             return true
         }
     }
