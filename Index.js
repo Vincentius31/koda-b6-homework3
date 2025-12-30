@@ -1,7 +1,7 @@
 const DataSet = [
     "Maria",
     "Mark",
-    "Mar io",
+    "Mario",
     "Deborah",
     "maria",
     "deborah",
@@ -43,12 +43,12 @@ function cocok(namaSiswa, keywordPencarian){ //Membuat function untuk mengecek a
     }
 }
 
-function search(keywordPencarian, dataArray, cb){
+function search(keywordPencarian, cb){
     let hasilPencarian = []
 
-    for(let i=0; i<dataArray.length; i++){
-        if(cocok(dataArray[i], keywordPencarian)){
-            hasilPencarian.push(dataArray[i])
+    for(let i=0; i<DataSet.length; i++){
+        if(cocok(DataSet[i], keywordPencarian)){
+            hasilPencarian.push(DataSet[i])
         }
     }
     cb(hasilPencarian)
@@ -60,4 +60,4 @@ function tampilkanHasil(hasilPencarian){
     console.log("Jumlah siswa:", hasilPencarian.length)
 }
 
-search("MaR", DataSet, tampilkanHasil)
+search("MaR", tampilkanHasil)
